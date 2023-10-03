@@ -12,6 +12,8 @@ import {
   EnvelopeOptions,
   FilterOptions,
   OmniOscillatorOptions,
+  LFO,
+  Frequency,
 } from "tone";
 
 type synthOptions = {
@@ -46,6 +48,10 @@ type bitCrusherOptions = {
   bits: number;
 };
 
+type lfoOptions = {
+    frequency: number;
+}
+
 export type options = {
   name: string;
   synth1: synthOptions;
@@ -57,6 +63,7 @@ export type options = {
   distortion: distortionOptions;
   delay: delayOptions;
   bitCrusher: bitCrusherOptions;
+  lfo: lfoOptions;
   masterVolume: number;
 };
 
@@ -80,6 +87,10 @@ export type ControlProps = {
 export type OscillatorControlsProps = {
   synthNum: 1 | 2;
   synth: PolySynth;
+};
+
+export type LFOControlsProps = {
+  lfo: LFO;
 };
 
 export type EnvelopeControlsProps = {

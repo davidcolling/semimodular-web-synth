@@ -55,6 +55,9 @@ const defaults: options = {
     wet: 0,
     bits: 16,
   },
+  lfo: {
+    frequency: 1
+  },
   masterVolume: -2, // -60 - 0
 };
 
@@ -112,6 +115,9 @@ const supersaw: options = {
   bitCrusher: {
     wet: 0,
     bits: 16,
+  },
+  lfo: {
+    frequency: 1
   },
   masterVolume: 0,
 };
@@ -171,6 +177,9 @@ const waterTemple: options = {
     wet: 0,
     bits: 16,
   },
+  lfo: {
+    frequency: 1
+  },
   masterVolume: 0,
 };
 
@@ -228,6 +237,9 @@ const sleepy: options = {
   bitCrusher: {
     wet: 0,
     bits: 16,
+  },
+  lfo: {
+    frequency: 1
   },
   masterVolume: 0,
 };

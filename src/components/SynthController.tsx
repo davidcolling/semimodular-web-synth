@@ -13,11 +13,13 @@ import {
   Destination,
   FFT,
   Synth,
+  LFO
 } from "tone";
 
 import { OptionsContext } from "../contexts/OptionsContext";
 
 import OscillatorControls from "./OscillatorControls";
+import LFOControls from "./LFOControls";
 import MasterControls from "./MasterControls";
 import EnvelopeControls from "./EnvelopeControls";
 import FilterControls from "./FilterControls";
@@ -48,6 +50,7 @@ class SynthController extends Component<{}, SynthControllerState> {
   delay: FeedbackDelay;
   bitCrusher: BitCrusher;
   fft: FFT;
+  lfo: LFO;
   state: SynthControllerState;
   constructor(props: any) {
     super(props);
@@ -69,6 +72,7 @@ class SynthController extends Component<{}, SynthControllerState> {
     this.delay = new FeedbackDelay(defaults.delay);
     this.bitCrusher = new BitCrusher(defaults.bitCrusher);
     this.fft = new FFT(512);
+    this.lfo = new LFO();
     this.init();
   }
 
@@ -250,6 +254,9 @@ class SynthController extends Component<{}, SynthControllerState> {
               octave={this.state.baseOctave}
               playNote={this.playNote}
               stopNote={this.stopNote}
+            />
+            <LFOControls
+              lfo={this.lfo}
             />
           </div>
         </OptionsContext.Provider>

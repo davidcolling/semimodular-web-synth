@@ -1,0 +1,56 @@
+import { useCallback, memo, ChangeEvent, useContext } from "react";
+import Knob from "./Knob";
+import { LFOControlsProps } from "../types";
+import { OptionsContext } from "../contexts/OptionsContext";
+
+const LFOControls = ({ lfo }: LFOControlsProps) => {
+  const frequency = parseFloat(lfo.get().frequency);
+  const optionsContext = useContext(OptionsContext);
+
+  const handleFrequencyChange = useCallback(
+    (value: number) => {
+      lfo.set({ frequency: value });
+
+      const optionsCopy = Object.assign({}, optionsContext.options);
+      optionsCopy.lfo.frequency = value;
+
+      optionsContext.setOptions(optionsCopy);
+    },
+    [lfo, optionsContext]
+  );
+
+  return (
+    <div className="control-container lfo-container">
+      <div className="row justify-center">
+        <div className="title-container">
+          <label className="unselectable title-big">{`LFO`}</label>
+          <p className="unselectable title-big">{frequency}</p>
+        </div>
+      </div>
+      <div className="row justify-center">
+        <div className="frequency-container">
+          <div className="row justify-center">
+            <div className="column hasTooltip">
+              <Knob
+                min={0}
+                max={10}
+                value={frequency}
+                onValueChange={handleFrequencyChange}
+                width={50}
+                height={50}
+                step={1}
+              />
+              <label className="unselectable title-small">Freq</label>
+              <span className="tooltip unselectable value">{`${Math.round(
+                      frequency
+              )}Hz`}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default memo(LFOControls);
+
