@@ -1,4 +1,4 @@
-import { useCallback, memo, ChangeEvent, useContext } from "react";
+import { useCallback, memo, useContext } from "react";
 import Knob from "./Knob";
 import { LFOControlsProps } from "../types";
 import { OptionsContext } from "../contexts/OptionsContext";
@@ -24,7 +24,6 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
       <div className="row justify-center">
         <div className="title-container">
           <label className="unselectable title-big">{`LFO`}</label>
-          <p className="unselectable title-big">{frequency}</p>
         </div>
       </div>
       <div className="row justify-center">
