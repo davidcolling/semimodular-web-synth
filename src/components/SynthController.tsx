@@ -218,7 +218,7 @@ class SynthController extends Component<{}, SynthControllerState> {
 
   render() {
     return (
-      <div className="container">
+      <div className="container unselectable">
         <div className="top-bar">
           <Midi playNote={this.playNote} stopNote={this.stopNote} />
           <Presets changePreset={this.changePreset} />
