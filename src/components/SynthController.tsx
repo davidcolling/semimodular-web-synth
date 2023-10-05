@@ -119,6 +119,9 @@ class SynthController extends Component<{}, SynthControllerState> {
       this.fft,
       Destination
     );
+
+    this.lfo.connect(this.filter.Q);
+    this.lfo.start();
   };
 
   onKeyDown = (event: KeyboardEvent) => {
