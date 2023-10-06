@@ -4,7 +4,7 @@ import { LFOControlsProps } from "../types";
 import { OptionsContext } from "../contexts/OptionsContext";
 
 const LFOControls = ({ lfo }: LFOControlsProps) => {
-  const frequency = parseFloat(lfo.get().frequency);
+  const frequency = lfo.frequency.toFrequency(lfo.frequency.value);
   const optionsContext = useContext(OptionsContext);
 
   const handleFrequencyChange = useCallback(
