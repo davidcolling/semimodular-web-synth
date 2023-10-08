@@ -5,14 +5,53 @@ import { OptionsContext } from "../contexts/OptionsContext";
 
 const LFOControls = ({ lfo }: LFOControlsProps) => {
   const frequency = lfo.frequency.toFrequency(lfo.frequency.value);
+  const min = lfo.get().min;
+  const max = lfo.get().max;
+  const amplitude = lfo.get().amplitude;
   const optionsContext = useContext(OptionsContext);
 
   const handleFrequencyChange = useCallback(
     (value: number) => {
-      lfo.set({ frequency: value });
+      lfo.set({ frequency: value});
 
       const optionsCopy = Object.assign({}, optionsContext.options);
       optionsCopy.lfo.frequency = value;
+
+      optionsContext.setOptions(optionsCopy);
+    },
+    [lfo, optionsContext]
+  );
+
+  const handleMinChange = useCallback(
+    (value: number) => {
+      lfo.set({ min: value });
+
+      const optionsCopy = Object.assign({}, optionsContext.options);
+      optionsCopy.lfo.min = value;
+
+      optionsContext.setOptions(optionsCopy);
+    },
+    [lfo, optionsContext]
+  );
+
+  const handleMaxChange = useCallback(
+    (value: number) => {
+      lfo.set({ max: value });
+
+      const optionsCopy = Object.assign({}, optionsContext.options);
+      optionsCopy.lfo.max = value;
+
+      optionsContext.setOptions(optionsCopy);
+    },
+    [lfo, optionsContext]
+  );
+
+  const handleAmplitudeChange = useCallback(
+    (value: number) => {
+      lfo.set({ amplitude: value});
+
+      const optionsCopy = Object.assign({}, optionsContext.options);
+      optionsCopy.lfo.amplitude = value;
 
       optionsContext.setOptions(optionsCopy);
     },
@@ -37,12 +76,57 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
                 onValueChange={handleFrequencyChange}
                 width={50}
                 height={50}
-                step={1}
+                step={0.01}
               />
               <label className="unselectable title-small">Freq</label>
-              <span className="tooltip unselectable value">{`${Math.round(
+              <span className="tooltip unselectable value">{`${
                       frequency
-              )}Hz`}</span>
+              }Hz`}</span>
+            </div>
+            <div className="column hasTooltip">
+              <Knob
+                min={-10}
+                max={10}
+                value={min}
+                onValueChange={handleMinChange}
+                width={50}
+                height={50}
+                step={100}
+              />
+              <label className="unselectable title-small">Min</label>
+              <span className="tooltip unselectable value">{`${Math.round(
+                      min
+              )}`}</span>
+            </div>
+            <div className="column hasTooltip">
+              <Knob
+                min={-10}
+                max={10}
+                value={max}
+                onValueChange={handleMaxChange}
+                width={50}
+                height={50}
+                step={100}
+              />
+              <label className="unselectable title-small">Max</label>
+              <span className="tooltip unselectable value">{`${Math.round(
+                      max
+              )}`}</span>
+            </div>
+            <div className="column hasTooltip">
+              <Knob
+                min={0}
+                max={1}
+                value={amplitude}
+                onValueChange={handleAmplitudeChange}
+                width={50}
+                height={50}
+                step={0.01}
+              />
+              <label className="unselectable title-small">Amp</label>
+              <span className="tooltip unselectable value">{`${
+                      amplitude
+              }`}</span>
             </div>
           </div>
         </div>
