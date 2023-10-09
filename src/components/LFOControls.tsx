@@ -79,9 +79,9 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
                 step={0.01}
               />
               <label className="unselectable title-small">Freq</label>
-              <span className="tooltip unselectable value">{`${
+              <span className="tooltip unselectable value">{`${Math.round(
                       frequency
-              }Hz`}</span>
+              )}Hz`}</span>
             </div>
             <div className="column hasTooltip">
               <Knob
@@ -124,9 +124,9 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
                 step={0.01}
               />
               <label className="unselectable title-small">Amp</label>
-              <span className="tooltip unselectable value">{`${
-                      amplitude
-              }`}</span>
+              <span className="tooltip unselectable value">{`${Math.round(
+                      amplitude * 100
+              )}%`}</span>
             </div>
           </div>
         </div>
