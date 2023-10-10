@@ -85,6 +85,21 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
             </div>
             <div className="column hasTooltip">
               <Knob
+                min={0}
+                max={1}
+                value={amplitude}
+                onValueChange={handleAmplitudeChange}
+                width={50}
+                height={50}
+                step={0.01}
+              />
+              <label className="unselectable title-small">Amp</label>
+              <span className="tooltip unselectable value">{`${Math.round(
+                      amplitude * 100
+              )}%`}</span>
+             </div>
+             <div className="column hasTooltip">
+              <Knob
                 min={-10}
                 max={10}
                 value={min}
@@ -113,22 +128,7 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
                       max
               )}`}</span>
             </div>
-            <div className="column hasTooltip">
-              <Knob
-                min={0}
-                max={1}
-                value={amplitude}
-                onValueChange={handleAmplitudeChange}
-                width={50}
-                height={50}
-                step={0.01}
-              />
-              <label className="unselectable title-small">Amp</label>
-              <span className="tooltip unselectable value">{`${Math.round(
-                      amplitude * 100
-              )}%`}</span>
-            </div>
-          </div>
+         </div>
         </div>
       </div>
     </div>
