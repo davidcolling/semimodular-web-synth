@@ -9,6 +9,7 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
   const max = lfo.get().max;
   const amplitude = lfo.get().amplitude;
   const optionsContext = useContext(OptionsContext);
+  var range = optionsContext.options.lfo.range;
 
   const handleFrequencyChange = useCallback(
     (value: number) => {
@@ -58,6 +59,18 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
     [lfo, optionsContext]
   );
 
+  const handleRangeChange = useCallback(
+    (value: number) => {
+      range = value;
+
+      const optionsCopy = Object.assign({}, optionsContext.options);
+      optionsCopy.lfo.range = value;
+
+      optionsContext.setOptions(optionsCopy);
+    },
+    [lfo, optionsContext]
+  );
+
   return (
     <div className="control-container lfo-container">
       <div className="row justify-center">
@@ -100,9 +113,9 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
              </div>
              <div className="column hasTooltip">
               <Knob
-                min={-10}
+                min={-10 * range}
                 max={10}
-                value={min}
+                value={min * range}
                 onValueChange={handleMinChange}
                 width={50}
                 height={50}
@@ -115,8 +128,8 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
             </div>
             <div className="column hasTooltip">
               <Knob
-                min={-10}
-                max={10}
+                min={-10 * range}
+                max={10 * range}
                 value={max}
                 onValueChange={handleMaxChange}
                 width={50}
@@ -127,6 +140,21 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
               <span className="tooltip unselectable value">{`${Math.round(
                       max
               )}`}</span>
+            </div>
+            <div className="column hasTooltip">
+              <Knob
+                min={1}
+                max={1000}
+                value={range}
+                onValueChange={handleRangeChange}
+                width={50}
+                height={50}
+                step={100}
+              />
+              <label className="unselectable title-small">Range</label>
+              <span className="tooltip unselectable value">{`${
+                      range
+              }`}</span>
             </div>
          </div>
         </div>

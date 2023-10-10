@@ -57,10 +57,10 @@ const defaults: options = {
   },
   lfo: {
     frequency: 1,
+    amplitude: 5,
     min: -10,
     max: 10,
-    amplitude: 5
-
+    range: 1,
   },
   masterVolume: -2, // -60 - 0
 };
@@ -122,9 +122,10 @@ const supersaw: options = {
   },
   lfo: {
     frequency: 1,
+    amplitude: 5,
     min: -10,
     max: 10,
-    amplitude: 5
+    range: 1,
   },
   masterVolume: 0,
 };
@@ -186,9 +187,10 @@ const waterTemple: options = {
   },
   lfo: {
     frequency: 1,
+    amplitude: 5,
     min: -10,
     max: 10,
-    amplitude: 5
+    range: 1,
   },
   masterVolume: 0,
 };
@@ -250,9 +252,10 @@ const sleepy: options = {
   },
   lfo: {
     frequency: 1,
+    amplitude: 5,
     min: -10,
     max: 10,
-    amplitude: 5
+    range: 1,
   },
   masterVolume: 0,
 };

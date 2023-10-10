@@ -50,9 +50,10 @@ type bitCrusherOptions = {
 
 type lfoOptions = {
     frequency: number;
+    amplitude: number;
     min: number;
     max: number;
-    amplitude: number;
+    range: number;
 }
 
 export type options = {
