@@ -114,12 +114,12 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
              <div className="column hasTooltip">
               <Knob
                 min={-10 * rangeMultiple}
-                max={10}
-                value={min * rangeMultiple}
+                max={10 * rangeMultiple}
+                value={min}
                 onValueChange={handleMinChange}
                 width={50}
                 height={50}
-                step={100}
+                step={1}
               />
               <label className="unselectable title-small">Min</label>
               <span className="tooltip unselectable value">{`${Math.round(
@@ -134,7 +134,7 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
                 onValueChange={handleMaxChange}
                 width={50}
                 height={50}
-                step={100}
+                step={1}
               />
               <label className="unselectable title-small">Max</label>
               <span className="tooltip unselectable value">{`${Math.round(
