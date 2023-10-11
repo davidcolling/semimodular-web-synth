@@ -53,7 +53,7 @@ type lfoOptions = {
     amplitude: number;
     min: number;
     max: number;
-    range: number;
+    rangeMultiple: number;
 }
 
 export type options = {

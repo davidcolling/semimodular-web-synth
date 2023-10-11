@@ -9,7 +9,7 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
   const max = lfo.get().max;
   const amplitude = lfo.get().amplitude;
   const optionsContext = useContext(OptionsContext);
-  var range = optionsContext.options.lfo.range;
+  var rangeMultiple = optionsContext.options.lfo.rangeMultiple;
 
   const handleFrequencyChange = useCallback(
     (value: number) => {
@@ -59,12 +59,12 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
     [lfo, optionsContext]
   );
 
-  const handleRangeChange = useCallback(
+  const handleRangeMultipleChange = useCallback(
     (value: number) => {
-      range = value;
+      rangeMultiple = value;
 
       const optionsCopy = Object.assign({}, optionsContext.options);
-      optionsCopy.lfo.range = value;
+      optionsCopy.lfo.rangeMultiple = value;
 
       optionsContext.setOptions(optionsCopy);
     },
@@ -113,9 +113,9 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
              </div>
              <div className="column hasTooltip">
               <Knob
-                min={-10 * range}
+                min={-10 * rangeMultiple}
                 max={10}
-                value={min * range}
+                value={min * rangeMultiple}
                 onValueChange={handleMinChange}
                 width={50}
                 height={50}
@@ -128,8 +128,8 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
             </div>
             <div className="column hasTooltip">
               <Knob
-                min={-10 * range}
-                max={10 * range}
+                min={-10 * rangeMultiple}
+                max={10 * rangeMultiple}
                 value={max}
                 onValueChange={handleMaxChange}
                 width={50}
@@ -145,15 +145,15 @@ const LFOControls = ({ lfo }: LFOControlsProps) => {
               <Knob
                 min={1}
                 max={1000}
-                value={range}
-                onValueChange={handleRangeChange}
+                value={rangeMultiple}
+                onValueChange={handleRangeMultipleChange}
                 width={50}
                 height={50}
                 step={100}
               />
-              <label className="unselectable title-small">Range</label>
+              <label className="unselectable title-small">* Range</label>
               <span className="tooltip unselectable value">{`${
-                      range
+                      rangeMultiple
               }`}</span>
             </div>
          </div>

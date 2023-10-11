@@ -60,7 +60,7 @@ const defaults: options = {
     amplitude: 5,
     min: -10,
     max: 10,
-    range: 1,
+    rangeMultiple: 1,
   },
   masterVolume: -2, // -60 - 0
 };
@@ -125,7 +125,7 @@ const supersaw: options = {
     amplitude: 5,
     min: -10,
     max: 10,
-    range: 1,
+    rangeMultiple: 1,
   },
   masterVolume: 0,
 };
@@ -190,7 +190,7 @@ const waterTemple: options = {
     amplitude: 5,
     min: -10,
     max: 10,
-    range: 1,
+    rangeMultiple: 1,
   },
   masterVolume: 0,
 };
@@ -255,7 +255,7 @@ const sleepy: options = {
     amplitude: 5,
     min: -10,
     max: 10,
-    range: 1,
+    rangeMultiple: 1,
   },
   masterVolume: 0,
 };
