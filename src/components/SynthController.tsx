@@ -257,7 +257,7 @@ class SynthController extends Component<{}, SynthControllerState> {
             />
             <LFOControls
               lfo={this.lfo}
-              filter={this.filter}
+              destination={this.filter.Q}
             />
           </div>
         </OptionsContext.Provider>

@@ -14,6 +14,8 @@ import {
   OmniOscillatorOptions,
   LFO,
   Frequency,
+  Signal,
+  InputNode, 
 } from "tone";
 
 type synthOptions = {
@@ -56,6 +58,7 @@ type lfoOptions = {
     rangeMultiple: number;
 }
 
+
 export type options = {
   name: string;
   synth1: synthOptions;
@@ -95,7 +98,7 @@ export type OscillatorControlsProps = {
 
 export type LFOControlsProps = {
   lfo: LFO;
-  filter: Filter;
+  destination: InputNode;
 };
 
 export type EnvelopeControlsProps = {

@@ -3,7 +3,7 @@ import Knob from "./Knob";
 import { LFOControlsProps } from "../types";
 import { OptionsContext } from "../contexts/OptionsContext";
 
-const LFOControls = ({ lfo, filter }: LFOControlsProps) => {
+const LFOControls = ({ lfo, destination }: LFOControlsProps) => {
   const frequency = lfo.frequency.toFrequency(lfo.frequency.value);
   const min = lfo.get().min;
   const max = lfo.get().max;
@@ -13,7 +13,7 @@ const LFOControls = ({ lfo, filter }: LFOControlsProps) => {
 
   useEffect(
     () => {
-      lfo.connect(filter['Q'])
+      lfo.connect(destination)
       lfo.start()
     },
     []
