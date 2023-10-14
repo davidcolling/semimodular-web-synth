@@ -95,6 +95,7 @@ export type OscillatorControlsProps = {
 
 export type LFOControlsProps = {
   lfo: LFO;
+  filter: Filter;
 };
 
 export type EnvelopeControlsProps = {

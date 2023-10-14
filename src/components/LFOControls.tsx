@@ -1,15 +1,23 @@
-import { useCallback, memo, useContext } from "react";
+import { useCallback, memo, useContext, useEffect } from "react";
 import Knob from "./Knob";
 import { LFOControlsProps } from "../types";
 import { OptionsContext } from "../contexts/OptionsContext";
 
-const LFOControls = ({ lfo }: LFOControlsProps) => {
+const LFOControls = ({ lfo, filter }: LFOControlsProps) => {
   const frequency = lfo.frequency.toFrequency(lfo.frequency.value);
   const min = lfo.get().min;
   const max = lfo.get().max;
   const amplitude = lfo.get().amplitude;
   const optionsContext = useContext(OptionsContext);
   var rangeMultiple = optionsContext.options.lfo.rangeMultiple;
+
+  useEffect(
+    () => {
+      lfo.connect(filter.Q)
+      lfo.start()
+    },
+    []
+  )
 
   const handleFrequencyChange = useCallback(
     (value: number) => {
