@@ -13,7 +13,7 @@ const LFOControls = ({ lfo, filter }: LFOControlsProps) => {
 
   useEffect(
     () => {
-      lfo.connect(filter.Q)
+      lfo.connect(filter['Q'])
       lfo.start()
     },
     []
