@@ -58,6 +58,10 @@ type lfoOptions = {
     rangeMultiple: number;
 }
 
+type patchbayOptions = {
+    lfo1Destination: string;
+}
+
 
 export type options = {
   name: string;
@@ -71,6 +75,7 @@ export type options = {
   delay: delayOptions;
   bitCrusher: bitCrusherOptions;
   lfo: lfoOptions;
+  patchbay: patchbayOptions;
   masterVolume: number;
 };
 
@@ -99,6 +104,11 @@ export type OscillatorControlsProps = {
 export type LFOControlsProps = {
   lfo: LFO;
   destination: InputNode;
+};
+
+export type PatchbayControlsProps = {
+    lfo1: LFO;
+    destination1: InputNode;
 };
 
 export type EnvelopeControlsProps = {
