@@ -20,6 +20,7 @@ import { OptionsContext } from "../contexts/OptionsContext";
 
 import OscillatorControls from "./OscillatorControls";
 import LFOControls from "./LFOControls";
+import PatchbayController from "./PatchbayController";
 import MasterControls from "./MasterControls";
 import EnvelopeControls from "./EnvelopeControls";
 import FilterControls from "./FilterControls";
@@ -258,6 +259,10 @@ class SynthController extends Component<{}, SynthControllerState> {
             <LFOControls
               lfo={this.lfo}
               destination={this.filter.Q}
+            />
+            <PatchbayController 
+              lfo1={this.lfo}
+              destination1={this.filter.Q}
             />
           </div>
         </OptionsContext.Provider>

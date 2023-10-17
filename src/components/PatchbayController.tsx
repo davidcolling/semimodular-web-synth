@@ -11,16 +11,13 @@ const PatchbayControls = ({ lfo1, destination1 }: PatchbayControlsProps) => {
     <div className="control-container">
       <div className="row justify-center">
         <div className="title-container">
-          <label className="unselectable title-big">{`Patchbay`}</label>
+          <label className="unselectable title-big">{`PATCHBAY`}</label>
         </div>
       </div>
       <div className="row justify-center">
         <div className="frequency-container">
           <div className="row justify-center">
             <div className="column hasTooltip">
-              <label className="unselectable" htmlFor="presetsSelect">
-                PATCHBAY
-              </label>
               <select
                 className="presets-select unselectable"
                 name="presetsSelect"
