@@ -109,6 +109,7 @@ export type LFOControlsProps = {
 export type PatchbayControlsProps = {
     lfo1: LFO;
     destination1: InputNode;
+    destination2: InputNode;
 };
 
 export type EnvelopeControlsProps = {

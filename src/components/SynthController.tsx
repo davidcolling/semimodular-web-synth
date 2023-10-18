@@ -263,6 +263,7 @@ class SynthController extends Component<{}, SynthControllerState> {
             <PatchbayController 
               lfo1={this.lfo}
               destination1={this.filter.Q}
+              destination2={this.filter.frequency}
             />
           </div>
         </OptionsContext.Provider>

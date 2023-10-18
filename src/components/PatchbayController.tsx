@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from "react";
 import { PatchbayControlsProps } from "../types";
 
-const PatchbayControls = ({ lfo1, destination1 }: PatchbayControlsProps) => {
+const PatchbayControls = ({ lfo1, destination1, destination2 }: PatchbayControlsProps) => {
   const destinations = ["filter cutoff"];
 
   const handleDestination1Change = (event: ChangeEvent<HTMLSelectElement>) => {
