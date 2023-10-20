@@ -258,7 +258,7 @@ class SynthController extends Component<{}, SynthControllerState> {
             />
             <LFOControls
               lfo={this.lfo}
-              destination={this.filter.Q}
+              destination={this.filter.frequency}
             />
             <PatchbayController 
               lfo1={this.lfo}
