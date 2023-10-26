@@ -15,7 +15,9 @@ import {
   LFO,
   Frequency,
   Signal,
-  InputNode, 
+  OutputNode,
+  InputNode,
+  ToneAudioNode,
 } from "tone";
 
 type synthOptions = {
@@ -59,7 +61,7 @@ type lfoOptions = {
 }
 
 type patchbayOptions = {
-    lfo1Destination: string;
+    lfo1Destination: number;
 }
 
 
@@ -103,13 +105,7 @@ export type OscillatorControlsProps = {
 
 export type LFOControlsProps = {
   lfo: LFO;
-  destination: InputNode;
-};
-
-export type PatchbayControlsProps = {
-    lfo1: LFO;
-    destination1: InputNode;
-    destination2: InputNode;
+  sourcesNum: number;
 };
 
 export type EnvelopeControlsProps = {
@@ -189,3 +185,23 @@ export type MidiProps = {
 export type PresetsProps = {
   changePreset: (preset: options) => void;
 };
+
+export type ModularOutput = {
+  id: number;
+  node: ToneAudioNode;
+  name: string;
+}
+
+export type ModularInput = {
+  id: number;
+  node: InputNode;
+  name: string;
+  isConnected: boolean;
+}
+
+export type PatchbayProps = {
+  sources: Array<ModularOutput>;
+  destinations: Array<ModularInput>;
+  patch: (source: number, destination: number, io: boolean) => void;
+}
+

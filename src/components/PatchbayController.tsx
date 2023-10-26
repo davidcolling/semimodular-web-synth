@@ -1,27 +1,16 @@
 import { ChangeEvent, useContext, useCallback } from "react";
-import { PatchbayControlsProps } from "../types";
 import { OptionsContext } from "../contexts/OptionsContext";
+import { PatchbayProps } from "../types/index.js";
 
-const PatchbayControls = ({ lfo1, destination1, destination2 }: PatchbayControlsProps) => {
-  const destinations = ["filter cutoff", "filter q"];
+const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
   const optionsContext = useContext(OptionsContext);
-  var connectionHappened = "false";
 
   const handleLfo1Change = (event: ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value
-    lfo1.stop();
-
-    if (value === "filter cutoff") {
-      lfo1.disconnect(destination2); 
-      lfo1.connect(destination1); 
-    } else if (value === "filter q") {
-      lfo1.disconnect(destination1); 
-      lfo1.connect(destination2);
-    }
-    lfo1.start()
-
+    const value = parseInt(event.target.value, 10);
     const optionsCopy = Object.assign({}, optionsContext.options);
+    patch(0, optionsCopy.patchbay.lfo1Destination, false);
     optionsCopy.patchbay.lfo1Destination = value;
+    patch(0, optionsCopy.patchbay.lfo1Destination, true);
 
     optionsContext.setOptions(optionsCopy);
   };
@@ -44,8 +33,8 @@ const PatchbayControls = ({ lfo1, destination1, destination2 }: PatchbayControls
               >
                 {destinations.map((destination) => {
                   return (
-                    <option key={destination} value={destination}>
-                      {destination}
+                    <option key={destination.id} value={destination.id}>
+                      {destination.name} {destination.id}
                     </option>
                   );
                 })}

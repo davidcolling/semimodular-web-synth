@@ -13,7 +13,7 @@ import {
   Destination,
   FFT,
   Synth,
-  LFO
+  LFO,
 } from "tone";
 
 import { OptionsContext } from "../contexts/OptionsContext";
@@ -32,7 +32,7 @@ import Presets from "./Presets";
 
 import { KEY_TO_FULLNOTE, VALID_KEYS } from "../globals/constants";
 
-import { options, SynthControllerState } from "../types";
+import { options, SynthControllerState, ModularOutput, ModularInput } from "../types";
 
 import { defaults } from "../presets";
 
@@ -52,6 +52,8 @@ class SynthController extends Component<{}, SynthControllerState> {
   bitCrusher: BitCrusher;
   fft: FFT;
   lfo: LFO;
+  sources: Array<ModularOutput>;
+  destinations: Array<ModularInput>;
   state: SynthControllerState;
   constructor(props: any) {
     super(props);
@@ -74,6 +76,29 @@ class SynthController extends Component<{}, SynthControllerState> {
     this.bitCrusher = new BitCrusher(defaults.bitCrusher);
     this.fft = new FFT(512);
     this.lfo = new LFO();
+
+    this.sources = [];
+    this.sources.push({
+      id: 0,
+      node: this.lfo,
+      name: "lfo1"
+    });
+    this.destinations = [];
+    this.destinations.push(
+      {
+        id: 0,
+        node: this.filter.frequency, 
+        name: "filter frequency",
+        isConnected: false
+      },
+      {
+        id: 1,
+        node: this.filter.Q,
+        name: "filter resonance",
+        isConnected: false
+      }
+    );
+
     this.init();
   }
 
@@ -120,6 +145,8 @@ class SynthController extends Component<{}, SynthControllerState> {
       this.fft,
       Destination
     );
+
+    this.lfo.start();
   };
 
   onKeyDown = (event: KeyboardEvent) => {
@@ -150,6 +177,15 @@ class SynthController extends Component<{}, SynthControllerState> {
       this.stopNote(fullNote);
     }
   };
+
+  // io is true, then connects, else disconnects
+  patch = (source: number, destination: number, io: boolean) => {
+    if (io) {
+      this.sources[source].node.connect(this.destinations[destination].node);
+    } else {
+      this.sources[source].node.disconnect(this.destinations[destination].node);
+    }
+  }
 
   playNote = (
     fullNote: string,
@@ -258,12 +294,12 @@ class SynthController extends Component<{}, SynthControllerState> {
             />
             <LFOControls
               lfo={this.lfo}
-              destination={this.filter.frequency}
+              sourcesNum={0}
             />
             <PatchbayController 
-              lfo1={this.lfo}
-              destination1={this.filter.Q}
-              destination2={this.filter.frequency}
+              sources={this.sources}
+              destinations={this.destinations}
+              patch={(source, destination, io) => this.patch(source, destination, io)}
             />
           </div>
         </OptionsContext.Provider>

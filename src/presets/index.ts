@@ -63,7 +63,7 @@ const defaults: options = {
     rangeMultiple: 1,
   },
   patchbay: {
-    lfo1Destination: "Filter Cutoff"
+    lfo1Destination: 0
   },
   masterVolume: -2, // -60 - 0
 };
@@ -131,7 +131,7 @@ const supersaw: options = {
     rangeMultiple: 1,
   },
   patchbay: {
-    lfo1Destination: "Filter Cutoff"
+    lfo1Destination: 0
   },
   masterVolume: 0,
 };
@@ -199,7 +199,7 @@ const waterTemple: options = {
     rangeMultiple: 1,
   },
   patchbay: {
-    lfo1Destination: "Filter Cutoff"
+    lfo1Destination: 0
   },
   masterVolume: 0,
 };
@@ -267,7 +267,7 @@ const sleepy: options = {
     rangeMultiple: 1,
   },
   patchbay: {
-    lfo1Destination: "Filter Cutoff"
+    lfo1Destination: 0
   },
   masterVolume: 0,
 };

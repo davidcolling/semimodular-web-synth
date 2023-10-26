@@ -3,21 +3,14 @@ import Knob from "./Knob";
 import { LFOControlsProps } from "../types";
 import { OptionsContext } from "../contexts/OptionsContext";
 
-const LFOControls = ({ lfo, destination }: LFOControlsProps) => {
+const LFOControls = ({ lfo, sourcesNum}: LFOControlsProps) => {
   const frequency = lfo.frequency.toFrequency(lfo.frequency.value);
   const min = lfo.get().min;
   const max = lfo.get().max;
   const amplitude = lfo.get().amplitude;
   const optionsContext = useContext(OptionsContext);
+  const lfo1Destination = optionsContext.options.patchbay.lfo1Destination;
   var rangeMultiple = optionsContext.options.lfo.rangeMultiple;
-
-  useEffect(
-    () => {
-      lfo.connect(destination)
-      lfo.start()
-    },
-    []
-  )
 
   const handleFrequencyChange = useCallback(
     (value: number) => {
