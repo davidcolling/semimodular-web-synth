@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useCallback } from "react";
+import { ChangeEvent, useContext, useCallback, memo } from "react";
 import { OptionsContext } from "../contexts/OptionsContext";
 import { PatchbayProps } from "../types/index.js";
 
@@ -47,5 +47,5 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
   );
 };
 
-export default PatchbayControls;
+export default memo(PatchbayControls);
 
