@@ -5,16 +5,19 @@ import { PatchbayProps } from "../types/index.js";
 const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
   const optionsContext = useContext(OptionsContext);
 
-  const handleLfo1Change = (event: ChangeEvent<HTMLSelectElement>) => {
-    const value = parseInt(event.target.value, 10);
-    const optionsCopy = Object.assign({}, optionsContext.options);
-    patch(0, optionsCopy.patchbay.lfo1Destination, false);
-    optionsCopy.patchbay.lfo1Destination = value;
-    patch(0, optionsCopy.patchbay.lfo1Destination, true);
-
-    optionsContext.setOptions(optionsCopy);
-  };
-
+  const handleLfo1Change = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      var value = parseInt(event.target.value, 10)
+      const optionsCopy = Object.assign({}, optionsContext.options);
+      patch(0, optionsCopy.patchbay.lfo1Destination, false);
+      optionsCopy.patchbay.lfo1Destination = value;
+      patch(0, optionsCopy.patchbay.lfo1Destination, true);
+  
+      optionsContext.setOptions(optionsCopy);
+    },
+    [optionsContext]
+  )
+  
   return (
     <div className="control-container">
       <div className="row justify-center">
