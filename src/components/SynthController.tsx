@@ -182,8 +182,10 @@ class SynthController extends Component<{}, SynthControllerState> {
   patch = (source: number, destination: number, io: boolean) => {
     if (io) {
       this.sources[source].node.connect(this.destinations[destination].node);
+      this.destinations[destination].isConnected = true;
     } else {
       this.sources[source].node.disconnect(this.destinations[destination].node);
+      this.destinations[destination].isConnected = false;
     }
   }
 
@@ -271,7 +273,7 @@ class SynthController extends Component<{}, SynthControllerState> {
               filter={this.filter}
               isPlaying={this.state.notesPlaying.length > 0}
               fft={this.fft}
-              qIsConnected={false}
+              qIsConnected={this.destinations[1].isConnected}
             />
             <EQ3Controls eq3={this.eq3} />
             <EffectsControls
