@@ -8,7 +8,7 @@ import "../styles/FilterControls.css";
 import { FilterRollOff } from "tone";
 import { OptionsContext } from "../contexts/OptionsContext";
 
-const FilterControls = ({ filter, isPlaying, fft }: FilterControlsProps) => {
+const FilterControls = ({ filter, isPlaying, fft, qIsConnected }: FilterControlsProps) => {
   const type = filter.type;
   const rolloff = filter.rolloff;
   const q = filter.get().Q;
@@ -43,11 +43,13 @@ const FilterControls = ({ filter, isPlaying, fft }: FilterControlsProps) => {
 
   const handleFilterQChange = useCallback(
     (value: number) => {
-      filter.set({ Q: value });
+      if (!qIsConnected) {
+        filter.set({ Q: value });
 
-      const optionsCopy = Object.assign({}, optionsContext.options);
-      optionsCopy.filter.Q = value;
-      optionsContext.setOptions(optionsCopy);
+        const optionsCopy = Object.assign({}, optionsContext.options);
+        optionsCopy.filter.Q = value;
+        optionsContext.setOptions(optionsCopy);
+      }
     },
     [filter, optionsContext]
   );

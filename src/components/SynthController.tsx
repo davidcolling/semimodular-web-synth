@@ -271,6 +271,7 @@ class SynthController extends Component<{}, SynthControllerState> {
               filter={this.filter}
               isPlaying={this.state.notesPlaying.length > 0}
               fft={this.fft}
+              qIsConnected={false}
             />
             <EQ3Controls eq3={this.eq3} />
             <EffectsControls

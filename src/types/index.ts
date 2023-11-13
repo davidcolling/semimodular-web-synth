@@ -117,6 +117,7 @@ export type FilterControlsProps = {
   filter: Filter;
   isPlaying: boolean;
   fft: FFT;
+  qIsConnected: boolean;
 };
 
 export type FilterDisplayProps = {
