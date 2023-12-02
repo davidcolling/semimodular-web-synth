@@ -63,7 +63,14 @@ const defaults: options = {
     rangeMultiple: 1,
   },
   patchbay: {
-    lfo1Destination: 0
+    o0dest: -1,
+    o1dest: -1,
+    o2dest: -1,
+    o3dest: -1,
+    dest0: false,
+    dest1: false,
+    dest2: false,
+    dest3: false,
   },
   masterVolume: -2, // -60 - 0
 };
@@ -131,7 +138,14 @@ const supersaw: options = {
     rangeMultiple: 1,
   },
   patchbay: {
-    lfo1Destination: 0
+    o0dest: -1,
+    o1dest: -1,
+    o2dest: -1,
+    o3dest: -1,
+    dest0: false,
+    dest1: false,
+    dest2: false,
+    dest3: false,
   },
   masterVolume: 0,
 };
@@ -199,7 +213,14 @@ const waterTemple: options = {
     rangeMultiple: 1,
   },
   patchbay: {
-    lfo1Destination: 0
+    o0dest: -1,
+    o1dest: -1,
+    o2dest: -1,
+    o3dest: -1,
+    dest0: false,
+    dest1: false,
+    dest2: false,
+    dest3: false,
   },
   masterVolume: 0,
 };
@@ -267,7 +288,14 @@ const sleepy: options = {
     rangeMultiple: 1,
   },
   patchbay: {
-    lfo1Destination: 0
+    o0dest: -1,
+    o1dest: -1,
+    o2dest: -1,
+    o3dest: -1,
+    dest0: false,
+    dest1: false,
+    dest2: false,
+    dest3: false,
   },
   masterVolume: 0,
 };

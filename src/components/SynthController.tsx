@@ -184,8 +184,10 @@ class SynthController extends Component<{}, SynthControllerState> {
       this.sources[source].node.connect(this.destinations[destination].node);
       this.destinations[destination].isConnected = true;
     } else {
-      this.sources[source].node.disconnect(this.destinations[destination].node);
-      this.destinations[destination].isConnected = false;
+      if (destination > -1) {
+        this.sources[source].node.disconnect(this.destinations[destination].node);
+        this.destinations[destination].isConnected = false;
+      }
     }
   }
 

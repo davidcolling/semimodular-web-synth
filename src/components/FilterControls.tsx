@@ -8,7 +8,7 @@ import "../styles/FilterControls.css";
 import { FilterRollOff } from "tone";
 import { OptionsContext } from "../contexts/OptionsContext";
 
-const FilterControls = ({ filter, isPlaying, fft, qIsConnected }: FilterControlsProps) => {
+const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
   const type = filter.type;
   const rolloff = filter.rolloff;
   const q = filter.get().Q;
@@ -43,10 +43,11 @@ const FilterControls = ({ filter, isPlaying, fft, qIsConnected }: FilterControls
 
   const handleFilterQChange = useCallback(
     (value: number) => {
-      if (!qIsConnected) {
+      if (!optionsContext.options.patchbay.dest1) {
+        const optionsCopy = Object.assign({}, optionsContext.options);
+
         filter.set({ Q: value });
 
-        const optionsCopy = Object.assign({}, optionsContext.options);
         optionsCopy.filter.Q = value;
         optionsContext.setOptions(optionsCopy);
       }
@@ -56,11 +57,13 @@ const FilterControls = ({ filter, isPlaying, fft, qIsConnected }: FilterControls
 
   const handleFilterFrequencyChange = useCallback(
     (value: number) => {
-      filter.set({ frequency: value });
+      if (!optionsContext.options.patchbay.dest0) {
+        filter.set({ frequency: value });
 
-      const optionsCopy = Object.assign({}, optionsContext.options);
-      optionsCopy.filter.frequency = value;
-      optionsContext.setOptions(optionsCopy);
+        const optionsCopy = Object.assign({}, optionsContext.options);
+        optionsCopy.filter.frequency = value;
+        optionsContext.setOptions(optionsCopy);
+      }
     },
     [filter, optionsContext]
   );

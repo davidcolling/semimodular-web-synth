@@ -61,7 +61,15 @@ type lfoOptions = {
 }
 
 type patchbayOptions = {
-    lfo1Destination: number;
+  [key: string]: boolean | number;
+  o0dest: number;
+  o1dest: number;
+  o2dest: number;
+  o3dest: number;
+  dest0: boolean;
+  dest1: boolean;
+  dest2: boolean;
+  dest3: boolean;
 }
 
 

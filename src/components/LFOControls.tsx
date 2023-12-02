@@ -9,7 +9,6 @@ const LFOControls = ({ lfo, sourcesNum}: LFOControlsProps) => {
   const max = lfo.get().max;
   const amplitude = lfo.get().amplitude;
   const optionsContext = useContext(OptionsContext);
-  const lfo1Destination = optionsContext.options.patchbay.lfo1Destination;
   var rangeMultiple = optionsContext.options.lfo.rangeMultiple;
 
   const handleFrequencyChange = useCallback(

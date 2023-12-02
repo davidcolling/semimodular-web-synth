@@ -9,9 +9,16 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
     (event: ChangeEvent<HTMLSelectElement>) => {
       var value = parseInt(event.target.value, 10)
       const optionsCopy = Object.assign({}, optionsContext.options);
-      patch(0, optionsCopy.patchbay.lfo1Destination, false);
-      optionsCopy.patchbay.lfo1Destination = value;
-      patch(0, optionsCopy.patchbay.lfo1Destination, true);
+
+      patch(0, optionsCopy.patchbay.o0dest, false);
+      const currentOut = 'dest' + JSON.stringify(optionsCopy.patchbay.o0dest);
+      optionsCopy.patchbay[currentOut] = false;
+
+      optionsCopy.patchbay.o0dest = value;
+
+      patch(0, optionsCopy.patchbay.o0dest, true);
+      const currentOut2 = 'dest' + JSON.stringify(optionsCopy.patchbay.o0dest);
+      optionsCopy.patchbay[currentOut2] = true;
   
       optionsContext.setOptions(optionsCopy);
     },
