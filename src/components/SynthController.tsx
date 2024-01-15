@@ -89,13 +89,15 @@ class SynthController extends Component<{}, SynthControllerState> {
         id: 0,
         node: this.filter.frequency, 
         name: "filter frequency",
-        isConnected: false
+        isConnected: false,
+        oldValue: ''
       },
       {
         id: 1,
         node: this.filter.Q,
         name: "filter resonance",
-        isConnected: false
+        isConnected: false,
+        oldValue: '' 
       }
     );
 
@@ -181,12 +183,14 @@ class SynthController extends Component<{}, SynthControllerState> {
   // io is true, then connects, else disconnects
   patch = (source: number, destination: number, io: boolean) => {
     if (io) {
+      this.destinations[destination].oldValue = this.destinations[destination].node.value
       this.sources[source].node.connect(this.destinations[destination].node);
       this.destinations[destination].isConnected = true;
     } else {
       if (destination > -1) {
         this.sources[source].node.disconnect(this.destinations[destination].node);
         this.destinations[destination].isConnected = false;
+        this.destinations[destination].node.value = this.destinations[destination].oldValue
       }
     }
   }
