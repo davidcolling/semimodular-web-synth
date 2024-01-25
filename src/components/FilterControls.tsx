@@ -1,4 +1,4 @@
-import { useCallback, memo, ChangeEvent, useContext } from "react";
+import { useCallback, memo, ChangeEvent, useContext, useEffect } from "react";
 import FilterDisplay from "./FilterDisplay";
 import Knob from "./Knob";
 import RadioButtonGroup from "./RadioButtonGroup";
@@ -16,6 +16,12 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
   const gain = filter.get().gain;
 
   const optionsContext = useContext(OptionsContext);
+
+  useEffect(() => {
+    if (!optionsContext.options.patchbay.dest1) {
+      filter.set({Q: optionsContext.options.filter.Q})
+    }
+  }, [optionsContext.options.patchbay.dest1]);
 
   const handleFilterTypeChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -125,7 +131,7 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
         </div>
         <div className="column filter-knob hasTooltip">
           <Knob
-            value={q}
+            value={optionsContext.options.filter.Q || 0}
             width={50}
             height={50}
             onValueChange={handleFilterQChange}
@@ -135,7 +141,7 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
           />
           <label className="unselectable title-small">Res</label>
           <span className="tooltip unselectable value">{`${Math.round(
-            q
+            optionsContext.options.filter.Q || 0  
           )}`}</span>
         </div>
         <div className="column filter-knob hasTooltip">
