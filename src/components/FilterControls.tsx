@@ -23,6 +23,12 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
     }
   }, [optionsContext.options.patchbay.dest1]);
 
+  useEffect(() => {
+    if (!optionsContext.options.patchbay.dest0) {
+      filter.set({frequency: optionsContext.options.filter.frequency})
+    }
+  }, [optionsContext.options.patchbay.dest0]);
+
   const handleFilterTypeChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value as BiquadFilterType;

@@ -22,7 +22,24 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
   
       optionsContext.setOptions(optionsCopy);
     },
-    [optionsContext]
+    [optionsContext, patch]
+  )
+
+  const handleLfo1Disconnect = useCallback(
+    () => {
+      const optionsCopy = Object.assign({}, optionsContext.options);
+
+      patch(0, optionsCopy.patchbay.o0dest, false);
+
+      const currentOut = 'dest' + JSON.stringify(optionsCopy.patchbay.o0dest);
+      optionsCopy.patchbay[currentOut] = false;
+
+      optionsCopy.patchbay.o0dest = -1;
+  
+      optionsContext.setOptions(optionsCopy);
+      
+    },
+    [optionsContext, patch]
   )
   
   return (
@@ -36,19 +53,26 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
         <div className="frequency-container">
           <div className="row justify-center">
             <div className="column hasTooltip">
+              <div>
               <select
                 className="presets-select unselectable"
                 name="presetsSelect"
                 onChange={handleLfo1Change}
               >
-                {destinations.map((destination) => {
-                  return (
-                    <option key={destination.id} value={destination.id}>
-                      {destination.name} {destination.id}
-                    </option>
-                  );
-                })}
+                  {destinations.map((destination) => {
+                    return (
+                      <option key={destination.id} value={destination.id}>
+                        {destination.name} {destination.id}
+                      </option>
+                    );
+                  })}
               </select>
+              <button
+                onClick={handleLfo1Disconnect}
+              >
+                Discon
+              </button>
+              </div>
             </div>
           </div>
         </div>
