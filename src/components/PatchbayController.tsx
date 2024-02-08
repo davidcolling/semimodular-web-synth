@@ -53,7 +53,6 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
         <div className="frequency-container">
           <div className="row justify-center">
             <div className="column hasTooltip">
-              <div>
               <select
                 className="presets-select unselectable"
                 name="presetsSelect"
@@ -72,7 +71,6 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
               >
                 Discon
               </button>
-              </div>
             </div>
           </div>
         </div>
