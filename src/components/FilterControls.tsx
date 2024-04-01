@@ -17,17 +17,17 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
 
   const optionsContext = useContext(OptionsContext);
 
-  useEffect(() => {
-    if (!optionsContext.options.patchbay.dest1) {
-      filter.set({Q: optionsContext.options.filter.Q})
-    }
-  }, [optionsContext.options.patchbay.dest1]);
+  // useEffect(() => {
+    // if (!optionsContext.options.patchbay.dest1) {
+      // filter.set({Q: optionsContext.options.filter.Q})
+    // }
+  // }, [optionsContext.options.patchbay.dest1]);
 
-  useEffect(() => {
-    if (!optionsContext.options.patchbay.dest0) {
-      filter.set({frequency: optionsContext.options.filter.frequency})
-    }
-  }, [optionsContext.options.patchbay.dest0]);
+  // useEffect(() => {
+    // if (!optionsContext.options.patchbay.dest0) {
+      // filter.set({frequency: optionsContext.options.filter.frequency})
+    // }
+  // }, [optionsContext.options.patchbay.dest0]);
 
   const handleFilterTypeChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {

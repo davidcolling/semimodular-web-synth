@@ -90,14 +90,14 @@ class SynthController extends Component<{}, SynthControllerState> {
         node: this.filter.frequency, 
         name: "filter frequency",
         isConnected: false,
-        oldValue: this.filter.frequency.toFrequency(this.filter.frequency.value)
+        oldValue: this.filter.frequency
       },
       {
         id: 1,
         node: this.filter.Q,
         name: "filter resonance",
         isConnected: false,
-        oldValue: this.filter.Q.value
+        oldValue: this.filter.Q
       }
     );
 
@@ -183,14 +183,7 @@ class SynthController extends Component<{}, SynthControllerState> {
   // io is true, then connects, else disconnects
   patch = (source: number, destination: number, io: boolean) => {
     if (io) {
-      switch(destination) {
-        case 0:
-          this.destinations[destination].oldValue = this.destinations[destination].node.value
-          break;
-        case 1:
-          this.destinations[destination].oldValue = this.filter.toFrequency(this.destinations[destination].node.value);
-          break;
-      }
+      this.destinations[destination].oldValue = this.destinations[destination].node.value
       this.sources[source].node.connect(this.destinations[destination].node);
       this.destinations[destination].isConnected = true;
     } else {
@@ -198,10 +191,10 @@ class SynthController extends Component<{}, SynthControllerState> {
         const newOptions = {...this.state.options};
         switch (destination) {
           case 0:
-            newOptions.filter.Q = this.destinations[destination].oldValue;
+            newOptions.filter.set({Q: this.destinations[destination].oldValue});
             break
           case 1:
-            newOptions.filter.frequency = this.destinations[destination].oldValue;
+            newOptions.filter.set({frequency: this.destinations[destination].oldValue});
             break
         }
         this.setState({options: newOptions});
