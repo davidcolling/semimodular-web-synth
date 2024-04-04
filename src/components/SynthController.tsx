@@ -182,33 +182,48 @@ class SynthController extends Component<{}, SynthControllerState> {
 
   // io is true, then connects, else disconnects
   patch = (source: number, destination: number, io: boolean) => {
+    console.log("before")
+    console.log("")
+    console.log("dest1 node")
+    console.log(this.destinations[0].node.value)
+    console.log("dest1 oldValue")
+    console.log(this.destinations[0].oldValue)
+    console.log("q value")
+    console.log(this.filter.get().Q);
+    const newOptions = Object.assign({}, this.state.options);
     if (io) {
       switch(destination) {
         case 0:
-          this.destinations[destination].oldValue = this.destinations[destination].node.value
+          this.lfo.connect(this.filter.frequency)
+          newOptions.patchbay.dest0 = true
+          newOptions.patchbay.o0dest = 0;
           break;
         case 1:
-          this.destinations[destination].oldValue = this.filter.toFrequency(this.destinations[destination].node.value);
+          this.lfo.connect(this.filter.Q)
+          newOptions.patchbay.dest1 = true
+          newOptions.patchbay.o0dest = 1;
           break;
       }
-      this.sources[source].node.connect(this.destinations[destination].node);
-      this.destinations[destination].isConnected = true;
     } else {
       if (destination > -1) {
-        const newOptions = {...this.state.options};
         switch (destination) {
           case 0:
-            newOptions.filter.Q = this.destinations[destination].oldValue;
+            this.lfo.disconnect(this.filter.frequency)
+            newOptions.filter.frequency = this.filter.frequency.toFrequency(this.filter.frequency.value);
+            // this.filter.Q.apply();
+            newOptions.patchbay.dest0 = false
+            newOptions.patchbay.o0dest = -1
             break
           case 1:
-            newOptions.filter.frequency = this.destinations[destination].oldValue;
+            this.lfo.disconnect(this.filter.Q)
+            newOptions.filter.Q = this.filter.get().Q;
+            newOptions.patchbay.dest1 = false
+            newOptions.patchbay.o0dest = -1
             break
         }
-        this.setState({options: newOptions});
-        this.sources[source].node.disconnect(this.destinations[destination].node);
-        this.destinations[destination].isConnected = false;
       }
     }
+    this.setState({options: newOptions});
   }
 
   playNote = (

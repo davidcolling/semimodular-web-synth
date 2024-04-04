@@ -20,7 +20,6 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
       const currentOut2 = 'dest' + JSON.stringify(optionsCopy.patchbay.o0dest);
       optionsCopy.patchbay[currentOut2] = true;
   
-      optionsContext.setOptions(optionsCopy);
     },
     [optionsContext, patch]
   )
@@ -36,7 +35,6 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
 
       optionsCopy.patchbay.o0dest = -1;
   
-      optionsContext.setOptions(optionsCopy);
       
     },
     [optionsContext, patch]

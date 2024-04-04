@@ -11,7 +11,7 @@ import { OptionsContext } from "../contexts/OptionsContext";
 const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
   const type = filter.type;
   const rolloff = filter.rolloff;
-  const q = filter.get().Q;
+  let q = filter.get().Q;
   const freq = filter.frequency.toFrequency(filter.frequency.value);
   const gain = filter.get().gain;
 
@@ -20,6 +20,7 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
   // useEffect(() => {
     // if (!optionsContext.options.patchbay.dest1) {
       // filter.set({Q: optionsContext.options.filter.Q})
+      // q = filter.get().Q
     // }
   // }, [optionsContext.options.patchbay.dest1]);
 
@@ -58,9 +59,12 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
       if (!optionsContext.options.patchbay.dest1) {
         const optionsCopy = Object.assign({}, optionsContext.options);
 
+        filter.Q.overridden = false;
         filter.set({ Q: value });
 
-        optionsCopy.filter.Q = value;
+        // console.log(filter.get().Q); // this returns 0 after disconnect
+
+        optionsCopy.filter.Q = value; // optionsContext value changes even after disconnect
         optionsContext.setOptions(optionsCopy);
       }
     },
@@ -137,7 +141,8 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
         </div>
         <div className="column filter-knob hasTooltip">
           <Knob
-            value={optionsContext.options.filter.Q || 0}
+            // value={optionsContext.options.filter.Q || 0}
+            value={q}
             width={50}
             height={50}
             onValueChange={handleFilterQChange}
@@ -147,7 +152,8 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
           />
           <label className="unselectable title-small">Res</label>
           <span className="tooltip unselectable value">{`${Math.round(
-            optionsContext.options.filter.Q || 0  
+            // optionsContext.options.filter.Q || 0
+            q
           )}`}</span>
         </div>
         <div className="column filter-knob hasTooltip">
