@@ -200,6 +200,10 @@ export type ModularOutput = {
   name: string;
 }
 
+export type PatchPortProps = {
+  isSelected: boolean;
+}
+
 export type ModularInput = {
   id: number;
   node: Signal<"frequency"> | Signal<"number"> | Signal<"positive">;

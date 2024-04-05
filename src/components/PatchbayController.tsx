@@ -1,6 +1,7 @@
 import { ChangeEvent, useContext, useCallback, memo } from "react";
 import { OptionsContext } from "../contexts/OptionsContext";
 import { PatchbayProps } from "../types/index.js";
+import PatchPort from "./PatchPort"
 
 const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
   const optionsContext = useContext(OptionsContext);
@@ -69,6 +70,9 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
               >
                 Discon
               </button>
+              <div>
+                <PatchPort isSelected={false} />
+              </div>
             </div>
           </div>
         </div>
