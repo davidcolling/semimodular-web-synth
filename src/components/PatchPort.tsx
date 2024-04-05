@@ -3,7 +3,6 @@ import { PatchPortProps } from "../types";
 
 const PatchPort = ({ isSelected }: PatchPortProps) => {
   return (
-    <div>
       <svg
         width={50}
         height={50}
@@ -27,7 +26,6 @@ const PatchPort = ({ isSelected }: PatchPortProps) => {
         />
       }
       </svg>
-    </div>
   );
 };
 

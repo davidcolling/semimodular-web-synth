@@ -1,10 +1,14 @@
 import { ChangeEvent, useContext, useCallback, memo } from "react";
 import { OptionsContext } from "../contexts/OptionsContext";
 import { PatchbayProps } from "../types/index.js";
-import PatchPort from "./PatchPort"
+import PatchPortRow from "./PatchPortRow"
 
 const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
   const optionsContext = useContext(OptionsContext);
+  let inputs = new Array();
+  inputs.push(true);
+  inputs.push(true);
+  inputs.push(false);
 
   const handleLfo1Change = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
@@ -71,7 +75,7 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
                 Discon
               </button>
               <div>
-                <PatchPort isSelected={false} />
+                <PatchPortRow inputs={inputs} />
               </div>
             </div>
           </div>
