@@ -88,16 +88,12 @@ class SynthController extends Component<{}, SynthControllerState> {
       {
         id: 0,
         node: this.filter.frequency, 
-        name: "filter frequency",
-        isConnected: false,
-        oldValue: this.filter.frequency.toFrequency(this.filter.frequency.value)
+        name: "filter frequency"
       },
       {
         id: 1,
         node: this.filter.Q,
-        name: "filter resonance",
-        isConnected: false,
-        oldValue: this.filter.Q.value
+        name: "filter resonance"
       }
     );
 

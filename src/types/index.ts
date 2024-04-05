@@ -204,8 +204,6 @@ export type ModularInput = {
   id: number;
   node: Signal<"frequency"> | Signal<"number"> | Signal<"positive">;
   name: string;
-  isConnected: boolean;
-  oldValue: number | undefined;
 }
 
 export type PatchbayProps = {
