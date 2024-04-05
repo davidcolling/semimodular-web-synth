@@ -182,14 +182,6 @@ class SynthController extends Component<{}, SynthControllerState> {
 
   // io is true, then connects, else disconnects
   patch = (source: number, destination: number, io: boolean) => {
-    console.log("before")
-    console.log("")
-    console.log("dest1 node")
-    console.log(this.destinations[0].node.value)
-    console.log("dest1 oldValue")
-    console.log(this.destinations[0].oldValue)
-    console.log("q value")
-    console.log(this.filter.get().Q);
     const newOptions = Object.assign({}, this.state.options);
     if (io) {
       switch(destination) {
@@ -210,7 +202,6 @@ class SynthController extends Component<{}, SynthControllerState> {
           case 0:
             this.lfo.disconnect(this.filter.frequency)
             newOptions.filter.frequency = this.filter.frequency.toFrequency(this.filter.frequency.value);
-            // this.filter.Q.apply();
             newOptions.patchbay.dest0 = false
             newOptions.patchbay.o0dest = -1
             break

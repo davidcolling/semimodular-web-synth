@@ -11,24 +11,11 @@ import { OptionsContext } from "../contexts/OptionsContext";
 const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
   const type = filter.type;
   const rolloff = filter.rolloff;
-  let q = filter.get().Q;
+  const q = filter.get().Q;
   const freq = filter.frequency.toFrequency(filter.frequency.value);
   const gain = filter.get().gain;
 
   const optionsContext = useContext(OptionsContext);
-
-  // useEffect(() => {
-    // if (!optionsContext.options.patchbay.dest1) {
-      // filter.set({Q: optionsContext.options.filter.Q})
-      // q = filter.get().Q
-    // }
-  // }, [optionsContext.options.patchbay.dest1]);
-
-  // useEffect(() => {
-    // if (!optionsContext.options.patchbay.dest0) {
-      // filter.set({frequency: optionsContext.options.filter.frequency})
-    // }
-  // }, [optionsContext.options.patchbay.dest0]);
 
   const handleFilterTypeChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -62,9 +49,7 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
         filter.Q.overridden = false;
         filter.set({ Q: value });
 
-        // console.log(filter.get().Q); // this returns 0 after disconnect
-
-        optionsCopy.filter.Q = value; // optionsContext value changes even after disconnect
+        optionsCopy.filter.Q = value; 
         optionsContext.setOptions(optionsCopy);
       }
     },
@@ -141,7 +126,6 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
         </div>
         <div className="column filter-knob hasTooltip">
           <Knob
-            // value={optionsContext.options.filter.Q || 0}
             value={q}
             width={50}
             height={50}
@@ -152,7 +136,6 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
           />
           <label className="unselectable title-small">Res</label>
           <span className="tooltip unselectable value">{`${Math.round(
-            // optionsContext.options.filter.Q || 0
             q
           )}`}</span>
         </div>
