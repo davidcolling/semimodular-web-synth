@@ -202,10 +202,12 @@ export type ModularOutput = {
 
 export type PatchPortProps = {
   isSelected: boolean;
+  patch: (source: number, destination: number, io: boolean) => void;
 }
 
 export type PatchPortRowProps = {
   inputs: Array<boolean>;
+  patch: (source: number, destination: number, io: boolean) => void;
 }
 
 export type ModularInput = {

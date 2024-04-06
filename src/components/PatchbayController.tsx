@@ -75,7 +75,7 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
                 Discon
               </button>
               <div>
-                <PatchPortRow inputs={inputs} />
+                <PatchPortRow inputs={inputs} patch={patch}/>
               </div>
             </div>
           </div>

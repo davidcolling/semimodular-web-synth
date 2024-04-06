@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { PatchPortProps } from "../types";
 
-const PatchPort = ({ isSelected }: PatchPortProps) => {
+const PatchPort = ({ isSelected, patch }: PatchPortProps) => {
   return (
       <svg
         width={50}
