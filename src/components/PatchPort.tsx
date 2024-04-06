@@ -7,26 +7,24 @@ const PatchPort = ({ isSelected, patch }: PatchPortProps) => {
         width={50}
         height={50}
       >
-      {
-        isSelected && 
-        <circle 
-          cx={25}
-          cy={25}
-          r={20}
-          fill="#000000"
-        />
-      }
-      {
-        !isSelected && 
         <circle 
           cx={25}
           cy={25}
           r={20}
           fill="#7f7f7f"
         />
-      }
+        {
+          isSelected && 
+            <circle 
+              cx={25}
+              cy={25}
+              r={20}
+              fill="#000000"
+            />
+        }
       </svg>
   );
 };
 
 export default memo(PatchPort);
+
