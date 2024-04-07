@@ -16,15 +16,15 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
           <div className="row justify-center">
             <div className="column hasTooltip">
               {
-              sources.map((source) => {
-                return (
-              <PatchPortRow 
-                source={source}
-                destinations={destinations} 
-                patch={patch}
-              />
-                );
-              })
+                sources.map((source) => {
+                  return (
+                    <PatchPortRow 
+                      source={source}
+                      destinations={destinations} 
+                      patch={patch}
+                    />
+                  );
+                })
               }
             </div>
           </div>
