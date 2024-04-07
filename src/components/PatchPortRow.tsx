@@ -13,11 +13,6 @@ const PatchPortRow = ({ source, destinations, patch }: PatchPortRowProps) => {
 
   return (
     <div style={{display: 'inline'}}>
-      <PatchPort
-        destId={-1}
-        isSelected={source.destination === -1}
-        onValueChange={onValueChange}
-      />
       {
         destinations.map((destination) => {
           return (
