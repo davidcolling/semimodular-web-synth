@@ -84,7 +84,8 @@ export type options = {
   distortion: distortionOptions;
   delay: delayOptions;
   bitCrusher: bitCrusherOptions;
-  lfo: lfoOptions;
+  lfo1: lfoOptions;
+  lfo2: lfoOptions;
   patchbay: patchbayOptions;
   masterVolume: number;
 };

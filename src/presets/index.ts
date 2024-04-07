@@ -55,7 +55,14 @@ const defaults: options = {
     wet: 0,
     bits: 16,
   },
-  lfo: {
+  lfo1: {
+    frequency: 1,
+    amplitude: 5,
+    min: -10,
+    max: 10,
+    rangeMultiple: 1,
+  },
+  lfo2: {
     frequency: 1,
     amplitude: 5,
     min: -10,
@@ -130,7 +137,14 @@ const supersaw: options = {
     wet: 0,
     bits: 16,
   },
-  lfo: {
+  lfo1: {
+    frequency: 1,
+    amplitude: 5,
+    min: -10,
+    max: 10,
+    rangeMultiple: 1,
+  },
+  lfo2: {
     frequency: 1,
     amplitude: 5,
     min: -10,
@@ -205,7 +219,14 @@ const waterTemple: options = {
     wet: 0,
     bits: 16,
   },
-  lfo: {
+  lfo1: {
+    frequency: 1,
+    amplitude: 5,
+    min: -10,
+    max: 10,
+    rangeMultiple: 1,
+  },
+  lfo2: {
     frequency: 1,
     amplitude: 5,
     min: -10,
@@ -280,7 +301,14 @@ const sleepy: options = {
     wet: 0,
     bits: 16,
   },
-  lfo: {
+  lfo1: {
+    frequency: 1,
+    amplitude: 5,
+    min: -10,
+    max: 10,
+    rangeMultiple: 1,
+  },
+  lfo2: {
     frequency: 1,
     amplitude: 5,
     min: -10,

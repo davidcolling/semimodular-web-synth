@@ -51,7 +51,8 @@ class SynthController extends Component<{}, SynthControllerState> {
   delay: FeedbackDelay;
   bitCrusher: BitCrusher;
   fft: FFT;
-  lfo: LFO;
+  lfo1: LFO;
+  lfo2: LFO;
   sources: Array<ModularOutput>;
   destinations: Array<ModularInput>;
   state: SynthControllerState;
@@ -75,15 +76,24 @@ class SynthController extends Component<{}, SynthControllerState> {
     this.delay = new FeedbackDelay(defaults.delay);
     this.bitCrusher = new BitCrusher(defaults.bitCrusher);
     this.fft = new FFT(512);
-    this.lfo = new LFO();
+    this.lfo1 = new LFO();
+    this.lfo2 = new LFO();
 
     this.sources = [];
-    this.sources.push({
-      id: 0,
-      node: this.lfo,
-      name: "lfo1",
-      destination: 0
-    });
+    this.sources.push(
+      {
+        id: 0,
+        node: this.lfo1,
+        name: "lfo1",
+        destination: -1
+      },
+      {
+        id: 1, 
+        node: this.lfo2,
+        name: "lfo2",
+        destination: -1
+      }
+    );
     this.destinations = [];
     this.destinations.push(
       {
@@ -147,7 +157,8 @@ class SynthController extends Component<{}, SynthControllerState> {
       Destination
     );
 
-    this.lfo.start();
+    this.lfo1.start();
+    this.lfo2.start();
   };
 
   onKeyDown = (event: KeyboardEvent) => {
@@ -292,8 +303,12 @@ class SynthController extends Component<{}, SynthControllerState> {
           </div>
           <div className="middle-container">
             <LFOControls
-              lfo={this.lfo}
+              lfo={this.lfo1}
               sourcesNum={0}
+            />
+            <LFOControls
+              lfo={this.lfo2}
+              sourcesNum={1}
             />
           </div>
           <div className="middle-container">

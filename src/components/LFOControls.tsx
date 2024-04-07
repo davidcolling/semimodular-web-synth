@@ -9,14 +9,26 @@ const LFOControls = ({ lfo, sourcesNum}: LFOControlsProps) => {
   const max = lfo.get().max;
   const amplitude = lfo.get().amplitude;
   const optionsContext = useContext(OptionsContext);
-  var rangeMultiple = optionsContext.options.lfo.rangeMultiple;
+  let rangeMultiple
+  if (sourcesNum === 0) {
+    rangeMultiple = optionsContext.options.lfo1.rangeMultiple;
+  } else {
+    rangeMultiple = optionsContext.options.lfo2.rangeMultiple;
+  }
 
   const handleFrequencyChange = useCallback(
     (value: number) => {
       lfo.set({ frequency: value});
 
       const optionsCopy = Object.assign({}, optionsContext.options);
-      optionsCopy.lfo.frequency = value;
+      switch ( sourcesNum) {
+        case 0:
+          optionsCopy.lfo1.frequency = value;
+          break;
+        case 1:
+          optionsCopy.lfo2.frequency = value;
+          break;
+      }
 
       optionsContext.setOptions(optionsCopy);
     },
@@ -28,7 +40,14 @@ const LFOControls = ({ lfo, sourcesNum}: LFOControlsProps) => {
       lfo.set({ min: value });
 
       const optionsCopy = Object.assign({}, optionsContext.options);
-      optionsCopy.lfo.min = value;
+      switch ( sourcesNum) {
+        case 0:
+          optionsCopy.lfo1.min = value;
+          break;
+        case 1:
+          optionsCopy.lfo2.min = value;
+          break;
+      }
 
       optionsContext.setOptions(optionsCopy);
     },
@@ -40,7 +59,14 @@ const LFOControls = ({ lfo, sourcesNum}: LFOControlsProps) => {
       lfo.set({ max: value });
 
       const optionsCopy = Object.assign({}, optionsContext.options);
-      optionsCopy.lfo.max = value;
+      switch ( sourcesNum) {
+        case 0:
+          optionsCopy.lfo1.max = value;
+          break;
+        case 1:
+          optionsCopy.lfo2.max = value;
+          break;
+      }
 
       optionsContext.setOptions(optionsCopy);
     },
@@ -52,7 +78,14 @@ const LFOControls = ({ lfo, sourcesNum}: LFOControlsProps) => {
       lfo.set({ amplitude: value});
 
       const optionsCopy = Object.assign({}, optionsContext.options);
-      optionsCopy.lfo.amplitude = value;
+      switch ( sourcesNum) {
+        case 0:
+          optionsCopy.lfo1.amplitude = value;
+          break;
+        case 1:
+          optionsCopy.lfo2.amplitude = value;
+          break;
+      }
 
       optionsContext.setOptions(optionsCopy);
     },
@@ -64,7 +97,14 @@ const LFOControls = ({ lfo, sourcesNum}: LFOControlsProps) => {
       rangeMultiple = value;
 
       const optionsCopy = Object.assign({}, optionsContext.options);
-      optionsCopy.lfo.rangeMultiple = value;
+      switch ( sourcesNum) {
+        case 0:
+          optionsCopy.lfo1.rangeMultiple = value;
+          break;
+        case 1:
+          optionsCopy.lfo2.rangeMultiple = value;
+          break;
+      }
 
       optionsContext.setOptions(optionsCopy);
     },
