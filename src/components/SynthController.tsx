@@ -309,6 +309,17 @@ class SynthController extends Component<{}, SynthControllerState> {
               bitCrusher={this.bitCrusher}
             />
           </div>
+          <div className="middle-container">
+            <LFOControls
+              lfo={this.lfo}
+              sourcesNum={0}
+            />
+            <PatchbayController 
+              sources={this.sources}
+              destinations={this.destinations}
+              patch={(source, destination, io) => this.patch(source, destination, io)}
+            />
+          </div>
           <div className="bottom-container">
             <MasterControls
               masterVolume={this.masterVolume}
@@ -320,15 +331,6 @@ class SynthController extends Component<{}, SynthControllerState> {
               octave={this.state.baseOctave}
               playNote={this.playNote}
               stopNote={this.stopNote}
-            />
-            <LFOControls
-              lfo={this.lfo}
-              sourcesNum={0}
-            />
-            <PatchbayController 
-              sources={this.sources}
-              destinations={this.destinations}
-              patch={(source, destination, io) => this.patch(source, destination, io)}
             />
           </div>
         </OptionsContext.Provider>

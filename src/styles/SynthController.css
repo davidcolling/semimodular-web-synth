@@ -35,6 +35,14 @@
   margin-top: 20px;
 }
 
+.middle-container{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding: 4px;
+  border: 3px solid black;
+}
+
 .bottom-container {
   background-color: #7f7f7f;
   display: flex;
