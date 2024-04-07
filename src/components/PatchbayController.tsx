@@ -18,11 +18,14 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
               {
                 sources.map((source) => {
                   return (
-                    <PatchPortRow 
-                      source={source}
-                      destinations={destinations} 
-                      patch={patch}
-                    />
+                    <div>
+                      <p style={{display: "inline"}} >{source.name}</p>
+                      <PatchPortRow 
+                        source={source}
+                        destinations={destinations} 
+                        patch={patch}
+                      />
+                    </div>
                   );
                 })
               }
