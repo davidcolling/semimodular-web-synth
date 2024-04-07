@@ -115,7 +115,7 @@ const LFOControls = ({ lfo, sourcesNum}: LFOControlsProps) => {
     <div className="control-container lfo-container">
       <div className="row justify-center">
         <div className="title-container">
-          <label className="unselectable title-big">{`LFO`}</label>
+          <label className="unselectable title-big">{`LFO ${sourcesNum + 1}`}</label>
         </div>
       </div>
       <div className="row justify-center">
