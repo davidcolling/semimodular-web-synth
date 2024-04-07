@@ -1,4 +1,4 @@
-import { useCallback, memo, ChangeEvent, useContext, useEffect } from "react";
+import { useCallback, memo, ChangeEvent, useContext, } from "react";
 import FilterDisplay from "./FilterDisplay";
 import Knob from "./Knob";
 import RadioButtonGroup from "./RadioButtonGroup";

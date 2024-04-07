@@ -1,4 +1,4 @@
-import { useCallback, memo, useContext, useEffect } from "react";
+import { useCallback, memo, useContext } from "react";
 import Knob from "./Knob";
 import { LFOControlsProps } from "../types";
 import { OptionsContext } from "../contexts/OptionsContext";

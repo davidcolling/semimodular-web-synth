@@ -1,4 +1,4 @@
-import { useCallback, memo } from "react";
+import { memo } from "react";
 import { PatchbayProps } from "../types/index.js";
 import PatchPortRow from "./PatchPortRow"
 

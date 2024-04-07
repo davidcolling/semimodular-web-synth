@@ -31,7 +31,8 @@ const PatchPort = ({ destId, isSelected, onValueChange }: PatchPortProps) => {
         }
       }
     }
-  }, [onValueChange, isSelected]);
+  }, [destId, isSelected, onValueChange]);
+
   return (
       <svg
         width={50}
