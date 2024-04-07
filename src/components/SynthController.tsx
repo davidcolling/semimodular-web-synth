@@ -183,34 +183,15 @@ class SynthController extends Component<{}, SynthControllerState> {
   patch = (source: number, destination: number, io: boolean) => {
     const newOptions = Object.assign({}, this.state.options);
     if (io) {
-      switch(destination) {
-        case 0:
-          this.lfo.connect(this.filter.frequency)
-          this.sources[0].destination = 0; 
-          this.destinations[destination].isSelected = true;
-          break;
-        case 1:
-          this.lfo.connect(this.filter.Q)
-          this.sources[0].destination = 1; 
-          this.destinations[destination].isSelected = true;
-          break;
-      }
+      this.sources[source].node.connect(this.destinations[destination].node);
+      this.sources[source].destination = destination;
+      this.destinations[destination].isSelected = true;
     } else {
       if (destination > -1) {
-        switch (destination) {
-          case 0:
-            this.lfo.disconnect(this.filter.frequency)
-            this.filter.frequency.overridden = false; 
-            this.sources[0].destination = -1;
-            this.destinations[destination].isSelected = false;
-            break
-          case 1:
-            this.lfo.disconnect(this.filter.Q)
-            this.filter.Q.overridden = false; 
-            this.sources[0].destination = -1;
-            this.destinations[destination].isSelected = false;
-            break
-        }
+        this.sources[source].node.disconnect(this.destinations[destination].node);
+        this.sources[source].destination = -1;
+        this.destinations[destination].isSelected = false;
+        this.destinations[destination].node.overridden = false;
       }
     }
     this.setState({options: newOptions});
