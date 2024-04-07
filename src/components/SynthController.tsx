@@ -314,6 +314,8 @@ class SynthController extends Component<{}, SynthControllerState> {
               lfo={this.lfo}
               sourcesNum={0}
             />
+          </div>
+          <div className="middle-container">
             <PatchbayController 
               sources={this.sources}
               destinations={this.destinations}
