@@ -6,7 +6,9 @@ const PatchPortRow = ({ source, destinations, patch }: PatchPortRowProps) => {
 
   const onValueChange = useCallback(
     (destId: number, value: boolean) => {
-      patch(source.id, destId, value);
+      if (!destinations[destId].isSelected || source.id === destinations[destId].connectedSource) {
+        patch(source.id, destId, value);
+      }
     }, 
     [source, patch]
   );
@@ -18,7 +20,7 @@ const PatchPortRow = ({ source, destinations, patch }: PatchPortRowProps) => {
           return (
             <PatchPort 
               destId={destination.id} 
-              isSelected={destination.isSelected} 
+              isSelected={destination.isSelected && source.destination === destination.id} 
               onValueChange={onValueChange} 
             />
           );

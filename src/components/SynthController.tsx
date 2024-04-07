@@ -99,12 +99,14 @@ class SynthController extends Component<{}, SynthControllerState> {
       {
         id: 0,
         isSelected: false,
+        connectedSource: -1,
         node: this.filter.frequency, 
         name: "filter frequency"
       },
       {
         id: 1,
         isSelected: false,
+        connectedSource: -1,
         node: this.filter.Q,
         name: "filter resonance"
       }
@@ -194,14 +196,21 @@ class SynthController extends Component<{}, SynthControllerState> {
   patch = (source: number, destination: number, io: boolean) => {
     const newOptions = Object.assign({}, this.state.options);
     if (io) {
+      if (this.sources[source].destination > -1) {
+        this.patch(source, this.sources[source].destination, false)
+      }
+
       this.sources[source].node.connect(this.destinations[destination].node);
       this.sources[source].destination = destination;
       this.destinations[destination].isSelected = true;
+      this.destinations[destination].connectedSource = source;
     } else {
       if (destination > -1) {
         this.sources[source].node.disconnect(this.destinations[destination].node);
         this.sources[source].destination = -1;
         this.destinations[destination].isSelected = false;
+        this.destinations[destination].connectedSource = -1;
+
         this.destinations[destination].node.overridden = false;
       }
     }

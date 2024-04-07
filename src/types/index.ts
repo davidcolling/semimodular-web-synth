@@ -217,6 +217,7 @@ export type PatchPortRowProps = {
 export type ModularInput = {
   id: number;
   isSelected: boolean;
+  connectedSource: number;
   node: Signal<"frequency"> | Signal<"number"> | Signal<"positive">;
   name: string;
 }
