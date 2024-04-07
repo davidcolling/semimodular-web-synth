@@ -81,17 +81,20 @@ class SynthController extends Component<{}, SynthControllerState> {
     this.sources.push({
       id: 0,
       node: this.lfo,
-      name: "lfo1"
+      name: "lfo1",
+      destination: 0
     });
     this.destinations = [];
     this.destinations.push(
       {
         id: 0,
+        isSelected: false,
         node: this.filter.frequency, 
         name: "filter frequency"
       },
       {
         id: 1,
+        isSelected: false,
         node: this.filter.Q,
         name: "filter resonance"
       }
@@ -183,13 +186,13 @@ class SynthController extends Component<{}, SynthControllerState> {
       switch(destination) {
         case 0:
           this.lfo.connect(this.filter.frequency)
-          newOptions.patchbay.dest0 = true
-          newOptions.patchbay.o0dest = 0;
+          this.sources[0].destination = 0; 
+          this.destinations[destination].isSelected = true;
           break;
         case 1:
           this.lfo.connect(this.filter.Q)
-          newOptions.patchbay.dest1 = true
-          newOptions.patchbay.o0dest = 1;
+          this.sources[0].destination = 1; 
+          this.destinations[destination].isSelected = true;
           break;
       }
     } else {
@@ -197,15 +200,15 @@ class SynthController extends Component<{}, SynthControllerState> {
         switch (destination) {
           case 0:
             this.lfo.disconnect(this.filter.frequency)
-            newOptions.filter.frequency = this.filter.frequency.toFrequency(this.filter.frequency.value);
-            newOptions.patchbay.dest0 = false
-            newOptions.patchbay.o0dest = -1
+            this.filter.frequency.overridden = false; 
+            this.sources[0].destination = -1;
+            this.destinations[destination].isSelected = false;
             break
           case 1:
             this.lfo.disconnect(this.filter.Q)
-            newOptions.filter.Q = this.filter.get().Q;
-            newOptions.patchbay.dest1 = false
-            newOptions.patchbay.o0dest = -1
+            this.filter.Q.overridden = false; 
+            this.sources[0].destination = -1;
+            this.destinations[destination].isSelected = false;
             break
         }
       }

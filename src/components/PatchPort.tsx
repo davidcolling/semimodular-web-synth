@@ -1,11 +1,42 @@
-import { memo } from "react";
+import { memo, useEffect, useRef } from "react";
 import { PatchPortProps } from "../types";
 
-const PatchPort = ({ isSelected, patch }: PatchPortProps) => {
+const PatchPort = ({ destId, isSelected, onValueChange }: PatchPortProps) => {
+  const patchPort = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const handleMouseDown = (event: MouseEvent) => {
+      event.preventDefault();
+      onValueChange(destId, !isSelected);
+    };
+
+    const handleTouchStart = (event: TouchEvent) => {
+      if (event.cancelable) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      onValueChange(destId, !isSelected);
+    };
+
+    if (patchPort) {
+      const current = patchPort.current;
+      if (current) {
+        current.addEventListener("touchstart", handleTouchStart);
+        current.addEventListener("mousedown", handleMouseDown);
+
+        return () => {
+          current.removeEventListener("touchstart", handleTouchStart);
+          current.removeEventListener("mousedown", handleMouseDown);
+
+        }
+      }
+    }
+  }, [onValueChange, isSelected]);
   return (
       <svg
         width={50}
         height={50}
+        ref={patchPort}
       >
         <circle 
           cx={25}

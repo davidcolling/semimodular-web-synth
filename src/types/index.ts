@@ -198,20 +198,24 @@ export type ModularOutput = {
   id: number;
   node: ToneAudioNode;
   name: string;
+  destination: number;
 }
 
 export type PatchPortProps = {
+  destId: number;
   isSelected: boolean;
-  patch: (source: number, destination: number, io: boolean) => void;
+  onValueChange: (desId: number, value: boolean) => void;
 }
 
 export type PatchPortRowProps = {
-  inputs: Array<boolean>;
+  source: ModularOutput;
+  destinations: Array<ModularInput>;
   patch: (source: number, destination: number, io: boolean) => void;
 }
 
 export type ModularInput = {
   id: number;
+  isSelected: boolean;
   node: Signal<"frequency"> | Signal<"number"> | Signal<"positive">;
   name: string;
 }

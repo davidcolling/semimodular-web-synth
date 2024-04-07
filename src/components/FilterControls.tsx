@@ -43,28 +43,23 @@ const FilterControls = ({ filter, isPlaying, fft}: FilterControlsProps) => {
 
   const handleFilterQChange = useCallback(
     (value: number) => {
-      if (!optionsContext.options.patchbay.dest1) {
         const optionsCopy = Object.assign({}, optionsContext.options);
 
-        filter.Q.overridden = false;
         filter.set({ Q: value });
 
         optionsCopy.filter.Q = value; 
         optionsContext.setOptions(optionsCopy);
-      }
     },
     [filter, optionsContext]
   );
 
   const handleFilterFrequencyChange = useCallback(
     (value: number) => {
-      if (!optionsContext.options.patchbay.dest0) {
         filter.set({ frequency: value });
 
         const optionsCopy = Object.assign({}, optionsContext.options);
         optionsCopy.filter.frequency = value;
         optionsContext.setOptions(optionsCopy);
-      }
     },
     [filter, optionsContext]
   );
