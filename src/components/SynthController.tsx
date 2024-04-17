@@ -115,9 +115,37 @@ class SynthController extends Component<{}, SynthControllerState> {
         id: 2,
         isSelected: false,
         connectedSource: -1, 
+        node: this.delay.wet, 
+        name: "delay wet"
+      },
+      {
+        id: 3,
+        isSelected: false,
+        connectedSource: -1, 
         node: this.delay.feedback, 
         name: "delay feedback"
-      }
+      },
+      {
+        id: 4,
+        isSelected: false,
+        connectedSource: -1, 
+        node: this.bitCrusher.wet, 
+        name: "bitcrush wet"
+      },
+      {
+        id: 5,
+        isSelected: false,
+        connectedSource: -1, 
+        node: this.distortion.wet, 
+        name: "distort wet"
+      },
+      {
+        id: 6,
+        isSelected: false,
+        connectedSource: -1, 
+        node: this.reverb.wet, 
+        name: "reverb wet"
+      },
     );
 
     this.init();
