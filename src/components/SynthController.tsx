@@ -219,9 +219,10 @@ class SynthController extends Component<{}, SynthControllerState> {
         this.destinations[destination].isSelected = false;
         this.destinations[destination].connectedSource = -1;
 
-        // if (this.destinations[destination].node instanceof (Signal<"frequency"> | Signal<"number"> | Signal<"positive">) ) {
-          // this.destinations[destination].node.overridden = false;
-        // }
+        if (this.destinations[destination].node instanceof Signal<"frequency">) {
+          let signalNode: Signal<"frequency"> = this.destinations[destination].node as Signal<"frequency">;
+          signalNode.overridden = false;
+        }
       }
     }
     this.setState({options: newOptions});
