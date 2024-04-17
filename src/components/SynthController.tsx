@@ -14,6 +14,7 @@ import {
   FFT,
   Synth,
   LFO,
+  Signal
 } from "tone";
 
 import { OptionsContext } from "../contexts/OptionsContext";
@@ -109,6 +110,13 @@ class SynthController extends Component<{}, SynthControllerState> {
         connectedSource: -1,
         node: this.filter.Q,
         name: "filter resonance"
+      },
+      {
+        id: 2,
+        isSelected: false,
+        connectedSource: -1, 
+        node: this.delay.feedback, 
+        name: "delay feedback"
       }
     );
 
@@ -211,7 +219,9 @@ class SynthController extends Component<{}, SynthControllerState> {
         this.destinations[destination].isSelected = false;
         this.destinations[destination].connectedSource = -1;
 
-        this.destinations[destination].node.overridden = false;
+        // if (this.destinations[destination].node instanceof (Signal<"frequency"> | Signal<"number"> | Signal<"positive">) ) {
+          // this.destinations[destination].node.overridden = false;
+        // }
       }
     }
     this.setState({options: newOptions});
