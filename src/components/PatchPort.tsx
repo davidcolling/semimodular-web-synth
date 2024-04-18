@@ -1,13 +1,13 @@
 import { memo, useEffect, useRef } from "react";
 import { PatchPortProps } from "../types";
 
-const PatchPort = ({ destId, isSelected, onValueChange }: PatchPortProps) => {
+const PatchPort = ({ sourceId, destId, isSelected, onValueChange }: PatchPortProps) => {
   const patchPort = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     const handleMouseDown = (event: MouseEvent) => {
       event.preventDefault();
-      onValueChange(destId, !isSelected);
+      onValueChange(sourceId, destId, !isSelected);
     };
 
     const handleTouchStart = (event: TouchEvent) => {
@@ -15,7 +15,7 @@ const PatchPort = ({ destId, isSelected, onValueChange }: PatchPortProps) => {
         event.preventDefault();
         event.stopPropagation();
       }
-      onValueChange(destId, !isSelected);
+      onValueChange(sourceId, destId, !isSelected);
     };
 
     if (patchPort) {

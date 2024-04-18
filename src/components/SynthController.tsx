@@ -102,14 +102,14 @@ class SynthController extends Component<{}, SynthControllerState> {
         isSelected: false,
         connectedSource: -1,
         node: this.filter.frequency, 
-        name: "filter frequency"
+        name: "filt cut"
       },
       {
         id: 1,
         isSelected: false,
         connectedSource: -1,
         node: this.filter.Q,
-        name: "filter resonance"
+        name: "filt res"
       },
       {
         id: 2,
@@ -123,28 +123,28 @@ class SynthController extends Component<{}, SynthControllerState> {
         isSelected: false,
         connectedSource: -1, 
         node: this.delay.feedback, 
-        name: "delay feedback"
+        name: "delay fb"
       },
       {
         id: 4,
         isSelected: false,
         connectedSource: -1, 
         node: this.bitCrusher.wet, 
-        name: "bitcrush wet"
+        name: "bitcr wet"
       },
       {
         id: 5,
         isSelected: false,
         connectedSource: -1, 
         node: this.distortion.wet, 
-        name: "distort wet"
+        name: "dstrt wet"
       },
       {
         id: 6,
         isSelected: false,
         connectedSource: -1, 
         node: this.reverb.wet, 
-        name: "reverb wet"
+        name: "rvb wet"
       },
     );
 

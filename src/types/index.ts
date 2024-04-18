@@ -204,9 +204,10 @@ export type ModularOutput = {
 }
 
 export type PatchPortProps = {
+  sourceId: number;
   destId: number;
   isSelected: boolean;
-  onValueChange: (desId: number, value: boolean) => void;
+  onValueChange: (sourceId: number, destId: number, value: boolean) => void;
 }
 
 export type PatchPortRowProps = {
