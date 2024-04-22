@@ -1,6 +1,8 @@
-![Screenshot including patchbay and LFOs](./screenshots/semimodular-synth.png)
+### Semi-Modular Web Synth
 
-Forked from Kevin Ungerecht
+## Ungerecht's web synth with a matrix patchbay and new modules
+
+![Screenshot including patchbay and LFOs](./screenshots/semimodular-synth.png)
 
 Pressing a dot in the grid will route the signal from the module indicated on the left to the synth parameter indicated on top.
 
