@@ -4,7 +4,11 @@
 
 ![Screenshot including patchbay and LFOs](./screenshots/semimodular-synth.png)
 
+### Basic Use
+
 Pressing a dot in the grid will route the signal from the module indicated on the left to the synth parameter indicated on top.
+
+### Known Issues
 
 Careful, sending signals that are out of a parameter's range might result in loud output. I'm working on a safeguard so that at least the webpage's audio output does not break. You may need to refresh. Heck, in-range signals can get loud too: not a bug.
 
