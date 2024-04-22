@@ -1,4 +1,4 @@
-[Screenshot including patchbay and LFOs](./screenshots/semimodular-synth.png)
+![Screenshot including patchbay and LFOs](./screenshots/semimodular-synth.png)
 
 Forked from Kevin Ungerecht
 
