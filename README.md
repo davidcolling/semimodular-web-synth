@@ -1,4 +1,4 @@
-### Semi-Modular Web Synth
+# Semi-Modular Web Synth
 
 ## Ungerecht's web synth with a matrix patchbay and new modules
 
