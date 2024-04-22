@@ -6,7 +6,7 @@
 
 ### Basic Use
 
-Pressing a dot in the grid will route the signal from the module indicated on the left to the synth parameter indicated on top.
+Pressing a dot in the grid will route the signal from the module indicated on the left to the synth parameter indicated on top. Use this with the low frequency oscillators LFOs I added to create countless customized modulation effects!
 
 ### Known Issues
 
