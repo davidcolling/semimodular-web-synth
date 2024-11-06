@@ -14,24 +14,23 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
   );
 
   return (
-    <div className="control-container">
-      <div className="row justify-center">
-        <div className="title-container">
+    <div>
+      <div>
+        <div>
           <label className="unselectable title-big">{`PATCHBAY`}</label>
         </div>
       </div>
-      <div className="row justify-center">
-        <div className="frequency-container">
-          <div className="row justify-center">
-            <div className="column hasTooltip">
-              <table>
+      <div>
+        <div>
+          <div>
+            <div>
+              <table style={{borderCollapse: 'collapse', borderSpacing: '0'}}>
                 <tr>
-                  <td></td>
+                  <td style={{width: '1px'}}></td>
                   {
                     destinations.map((destination) => {
                       return (
-                        <td className="title-small" style={{width: '50px'}}>
-                          {destination.name}
+                        <td style={{width: '1px'}}>
                         </td>
                       );
                     })
@@ -41,13 +40,12 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
                   sources.map((source) => {
                     return (
                       <tr>
-                        <td>
-                          {source.name}
+                        <td style={{width: '1px'}}>
                         </td>
                           {
                             destinations.map((destination) => {
                               return (
-                                <td>
+                                <td style={{width: '1px'}}>
                                   <PatchPort 
                                     sourceId={source.id}
                                     destId={destination.id} 

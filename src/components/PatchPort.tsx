@@ -35,22 +35,31 @@ const PatchPort = ({ sourceId, destId, isSelected, onValueChange }: PatchPortPro
 
   return (
       <svg
-        width={50}
-        height={50}
+        width={30}
+        height={30}
         ref={patchPort}
       >
+        //  make skeumorphic to moog 5U patch port (see model 10): a big silver circle at the bottome ( closest to module "panel"), smaller silver hexagon, then smaller silver circle, then an empty hole
+        //  maybe not above since its for a patch cable not a plug in a matrix
+        //  EMS VCS is a better analogue
         <circle 
-          cx={25}
-          cy={25}
-          r={20}
-          fill="#7f7f7f"
+          cx={15}
+          cy={15}
+          r={10}
+          fill="#222222"
+        />
+        <circle 
+          cx={17}
+          cy={17}
+          r={7}
+          fill="#444444"
         />
         {
           isSelected && 
             <circle 
-              cx={25}
-              cy={25}
-              r={20}
+              cx={15}
+              cy={15}
+              r={10}
               fill="#000000"
             />
         }
