@@ -2,6 +2,7 @@ import { memo, useCallback } from "react";
 import { PatchbayProps } from "../types/index.js";
 import PatchPort from "./PatchPort";
 import PatchbayInputLabel from "./PatchbayInputLabel";
+import PatchbayOutputLabel from "./PatchbayOutputLabel";
 
 const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
 
@@ -32,6 +33,7 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
                     destinations.map((destination) => {
                       return (
                         <td style={{width: '1px'}}>
+                          <PatchbayOutputLabel name={destination.name} />
                         </td>
                       );
                     })

@@ -39,6 +39,10 @@ body {
   padding: 5px 10px 10px 10px;
 }
 
+.rotated {
+    rotate: 90deg;
+}
+
 .title-big {
   font-size: 13px;
 }
