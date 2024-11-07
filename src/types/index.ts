@@ -230,7 +230,7 @@ export type PatchbayProps = {
   patch: (source: number, destination: number, io: boolean) => void;
 }
 
-export type PatchbayInputLabelProps = {
+export type PatchbayLabelProps = {
   name: string;
 }
 

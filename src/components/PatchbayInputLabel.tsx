@@ -1,7 +1,7 @@
 import { memo } from "react";
-import { PatchbayInputLabelProps } from "../types";
+import { PatchbayLabelProps } from "../types";
 
-const PatchbayInputLabel = ({ name, }: PatchbayInputLabelProps ) => {
+const PatchbayInputLabel = ({ name, }: PatchbayLabelProps ) => {
   return (
     <div
       style={{

@@ -1,7 +1,7 @@
 import { memo } from "react";
-import { PatchbayInputLabelProps } from "../types";
+import { PatchbayLabelProps } from "../types";
 
-const PatchbayOutputLabel = ({ name }: PatchbayInputLabelProps ) => {
+const PatchbayOutputLabel = ({ name }: PatchbayLabelProps ) => {
   return (
     <div>
       <div className="title-small rotated">
