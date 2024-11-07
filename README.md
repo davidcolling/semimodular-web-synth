@@ -2,7 +2,7 @@
 
 ## Ungerecht's web synth with a matrix patchbay and new modules
 
-![Screenshot including patchbay and LFOs](./screenshots/semimodular-synth.png)
+![Screenshot including patchbay and LFOs](./screenshots/semimodular-synth.jpg)
 
 ### Basic Use
 
