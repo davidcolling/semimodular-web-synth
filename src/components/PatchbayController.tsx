@@ -1,6 +1,7 @@
 import { memo, useCallback } from "react";
 import { PatchbayProps } from "../types/index.js";
-import PatchPort from "./PatchPort"
+import PatchPort from "./PatchPort";
+import PatchbayInputLabel from "./PatchbayInputLabel";
 
 const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
 
@@ -40,7 +41,8 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
                   sources.map((source) => {
                     return (
                       <tr>
-                        <td style={{width: '1px'}}>
+                        <td style={{width: '100px'}}>
+                          <PatchbayInputLabel name={source.name} />
                         </td>
                           {
                             destinations.map((destination) => {
