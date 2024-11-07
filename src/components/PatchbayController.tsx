@@ -15,16 +15,16 @@ const PatchbayControls = ({sources, destinations, patch}: PatchbayProps) => {
   );
 
   return (
-    <div>
-      <div>
-        <div>
+    <div className="control-container">
+      <div className="row justify-center">
+        <div className="title-container">
           <label className="unselectable title-big">{`PATCHBAY`}</label>
         </div>
       </div>
-      <div>
-        <div>
-          <div>
-            <div>
+      <div className="row justify-center">
+        <div className="frequency-container">
+          <div className="row justify-center">
+            <div className="column hasTooltip">
               <table style={{borderCollapse: 'collapse', borderSpacing: '0'}}>
                 <tr>
                   <td style={{width: '1px'}}></td>

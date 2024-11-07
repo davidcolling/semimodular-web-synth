@@ -8,6 +8,12 @@ const PatchbayInputLabel = ({ name, }: PatchbayInputLabelProps ) => {
         display: "inline"
       }}
     >
+      <p className="unselectable title-small"
+        style={{
+          display: "inline",
+          padding: "5px"
+        }}
+      >{name}</p>
       <svg
         width={10}
         height={10}
